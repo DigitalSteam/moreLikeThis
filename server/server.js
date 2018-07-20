@@ -11,5 +11,5 @@ app.use(parser.urlencoded({
 app.use(express.static('./public'));
 
 app.listen(port, () => {
-  console.log('Listening on port 3004');
+  console.log('Listening on port ' + port);
 });
