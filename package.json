@@ -20,7 +20,7 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -34,6 +34,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "faker": "^4.1.0",
     "jest": "^23.4.1",
     "jest-puppeteer": "^3.2.1",
     "mysql": "^2.16.0",
