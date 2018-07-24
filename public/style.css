@@ -6,6 +6,11 @@
   color: #c6d4df;
 }
 
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .right a {
   float: right;
   background-color: rgba(103, 193, 245, 0.2);
@@ -15,6 +20,8 @@
 }
 
 .block_header h4 {
+  margin-bottom: 12px;
+  padding-left: 2px;
   padding-top: 3px;
   padding-bottom: 3px;
   font-size: 20px;
@@ -55,7 +62,7 @@ a:-webkit-any-link {
   background-size: 20px;
 }
 
-.block .slider_comp {
+.slider_comp {
   background: #122333;
   position: relative;
   height: 18px;
@@ -80,4 +87,51 @@ a:-webkit-any-link {
   height: 18px;
   width: 60px;
   cursor: pointer;
+}
+
+.store_horizontal_games {
+  height: 132px;
+  overflow: hidden;
+  margin-bottom: 1px;
+}
+
+#recommended_block_content {
+  white-space: nowrap;
+  width: auto;
+}
+
+.game_info {
+  background-color: rgb(0, 0, 0, 0.2);
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  padding: 15px;
+  height: 100px;
+  margin-right: 2px;
+  position: relative;
+}
+
+.game_info img {
+  width: 172px;
+  max-width: 100%;
+  border: none;
+}
+
+.game_info h4 {
+  height: 19px;
+  font-size: 13px;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: normal;
+  color: #8f98a0;
+  width: 172px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 0px;
+}
+
+.final_price {
+  line-height: 15px;
+  font-size: 11px;
+  color: #acdbf5;
 }
