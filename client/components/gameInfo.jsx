@@ -6,11 +6,12 @@ export default class GameInfo extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="game_info">
         <img src="https://steamcdn-a.akamaihd.net/steam/apps/570/capsule_184x69.jpg?t=1525818062" />
-        <h4>Dota 2</h4>
-        <div className="final_price">Free to Play</div>
+        <h4>{this.props.likeThis.name}</h4>
+        <div className="final_price">${this.props.likeThis.price}</div>
       </div>
     );
   }
