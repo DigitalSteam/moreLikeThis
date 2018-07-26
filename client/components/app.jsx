@@ -6,10 +6,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      likeThis: [{}, {}, {}, {}, {}],
+      likeThis: [],
       isScrolling: false,
       xPos: 0,
+      currentGenre: 1,
     });
+    this.getRelevant(this.state.currentGenre);
+  }
+
+  getRelevant(genreId) {
+    var that = this;
+    fetch(`/api/games/:${genreId}/more-games`)
+      .then(response => response.json())
+      .then((info) => {
+        that.setState({
+          likeThis: info,
+        });
+      })
+      .catch((error) => {
+        console.log('Error getting relevant titles', error);
+      });
   }
 
   render() {
@@ -37,7 +53,7 @@ class App extends React.Component {
         <div className="store_horizontal_games">
           <div id="recommended_block_content" style={blockStyle}>
             {this.state.likeThis.map((elem) => {
-              return <GameInfo />;
+              return <GameInfo likeThis={elem} />;
             })}
           </div>
         </div>

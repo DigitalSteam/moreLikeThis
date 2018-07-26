@@ -27,10 +27,20 @@ const popGenres = (genreName) => {
 };
 
 const popLink = (currentGame) => {
-  const randomNum = Math.ceil(Math.random() * 11);
+  const randomNum = Math.ceil(Math.random() * 12);
   connection.query(`INSERT INTO link (genreId, gameId) VALUES ((SELECT id FROM genres WHERE genres.id=${randomNum}), (SELECT id FROM games WHERE games.name='${currentGame}'))`, (err) => {
     if (err) {
       throw err;
+    }
+  });
+};
+
+const getRelevantGames = (genreId, cb) => {
+  connection.query(`SELECT * FROM games INNER JOIN link ON link.genreId=${genreId} AND link.gameId=games.id`, (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      cb(null, data);
     }
   });
 };
@@ -39,4 +49,5 @@ module.exports = {
   popDb,
   popGenres,
   popLink,
+  getRelevantGames,
 };

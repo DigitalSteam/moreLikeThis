@@ -12,9 +12,20 @@ app.use(parser.urlencoded({
 }));
 app.use(express.static('./public'));
 
+app.get('/api/games/:genreId/more-games', (req, res) => {
+  db.getRelevantGames(req.params.genreId.match(/\d+/g)[0], (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log('Listening on port ' + port);
 });
+
 
 // this code is for populating the database initially
 // const genreArray = ['Action', 'Adventure', 'Casual', 'Early Access', 'Free to Play', 'Indie', 'Massively Multiplayer', 'Racing', 'RPG', 'Simulation', 'Sports', 'Strategy'];
