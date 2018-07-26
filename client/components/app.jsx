@@ -12,20 +12,42 @@ class App extends React.Component {
       currentGenre: 1,
     });
     this.getRelevant(this.state.currentGenre);
+    this.mouseDown = this.mouseDown.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.mouseUp = this.mouseUp.bind(this);
   }
 
   getRelevant(genreId) {
-    var that = this;
     fetch(`/api/games/:${genreId}/more-games`)
       .then(response => response.json())
       .then((info) => {
-        that.setState({
+        this.setState({
           likeThis: info,
         });
       })
       .catch((error) => {
         console.log('Error getting relevant titles', error);
       });
+  }
+
+  mouseDown(e) {
+    this.setState({
+      isScrolling: true,
+    });
+  }
+
+  mouseUp(e) {
+    this.setState({
+      isScrolling: false,
+    });
+  }
+
+  handleScroll(e) {
+    if (this.state.isScrolling) {
+      this.setState({
+        xPos: e.screenX - 75,
+      });
+    }
   }
 
   render() {
@@ -61,7 +83,7 @@ class App extends React.Component {
           <div className="slider_left" />
           <div className="slider_right" />
           <div className="slider">
-            <div className="handle" style={handleStyle} />
+            <div className="handle" style={handleStyle} onMouseDown={this.mouseDown} onMouseMove={this.handleScroll} onMouseUp={this.mouseUp} />
           </div>
         </div>
       </div>
