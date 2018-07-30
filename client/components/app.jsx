@@ -30,20 +30,20 @@ class App extends React.Component {
       });
   }
 
-  mouseDown(e) {
+  mouseDown() {
     this.setState({
       isScrolling: true,
     });
   }
 
-  mouseUp(e) {
+  mouseUp() {
     this.setState({
       isScrolling: false,
     });
   }
 
   handleScroll(e) {
-    if (this.state.isScrolling) {
+    if (this.state.isScrolling && ((this.state.xPos >= 0 && e.screenX < 753 && e.screenX > 40) || (this.state.xPos <= 670 && e.screenX > 85))) {
       this.setState({
         xPos: e.screenX - 75,
       });
@@ -61,7 +61,7 @@ class App extends React.Component {
     };
 
     return (
-      <div className="block" id="recommended_block">
+      <div className="block" id="recommended_block" onMouseMove={this.handleScroll} onMouseUp={this.mouseUp}>
         <div className="block_header">
           <div className="right">
             <a href="#">
