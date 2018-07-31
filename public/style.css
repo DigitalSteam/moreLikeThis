@@ -102,11 +102,11 @@ a:-webkit-any-link {
 
 .store_horizontal_games {
   height: 132px;
-  overflow: hidden;
   margin-bottom: 1px;
 }
 
 #recommended_block_content {
+  overflow: hidden;
   white-space: nowrap;
   width: auto;
 }
