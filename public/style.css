@@ -1,5 +1,7 @@
 body {
   background-color: #1c2838;
+  display: flex;
+  justify-content: center;
 }
 
 .block {
