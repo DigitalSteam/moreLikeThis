@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   getRelevant(genreId) {
-    fetch(`/api/games/:${genreId}/more-games`)
+    fetch(`http://127.0.0.1:3004/api/games/:${genreId}/more-games`)
       .then(response => response.json())
       .then((info) => {
         this.setState({

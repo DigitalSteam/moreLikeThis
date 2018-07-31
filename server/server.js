@@ -6,11 +6,19 @@ const db = require('../db/index.js');
 const port = 3004;
 const app = express();
 
+const allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+};
+
 app.use(parser.json());
 app.use(parser.urlencoded({
   extended: true,
 }));
 app.use(express.static('./public'));
+app.use(allowCrossDomain);
 
 app.get('/api/games/:genreId/more-games', (req, res) => {
   db.getRelevantGames(req.params.genreId.match(/\d+/g)[0], (err, data) => {
