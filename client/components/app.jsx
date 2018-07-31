@@ -47,11 +47,13 @@ class App extends React.Component {
   handleScroll(e) {
     const obj = document.getElementById('recommended_block_content');
     const totalLength = (obj.childElementCount - 4) * 202;
-    if (this.state.isScrolling && ((this.state.xPos > 0 && e.screenX < 753 && e.screenX > 40) || (this.state.xPos <= 670 && e.screenX > 85))) {
+    const start = ((window.innerWidth - 815) / 2) + 76;
+    const end = window.innerWidth - ((window.innerWidth - 815) / 2) - 76;
+    if (this.state.isScrolling && ((this.state.xPos > 0 && e.screenX < end) || (this.state.xPos <= 676 && e.screenX > start))) {
       const percent = (this.state.xPos / 670);
       obj.scrollLeft = totalLength * percent;
       this.setState({
-        xPos: e.screenX - 75,
+        xPos: e.screenX - start,
       });
     }
   }
