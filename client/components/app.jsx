@@ -15,6 +15,8 @@ class App extends React.Component {
     this.mouseDown = this.mouseDown.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
+    this.leftButtonClick = this.leftButtonClick.bind(this);
+    this.rightButtonClick = this.rightButtonClick.bind(this);
   }
 
   getRelevant(genreId) {
@@ -30,24 +32,48 @@ class App extends React.Component {
       });
   }
 
-  mouseDown(e) {
+  mouseDown() {
     this.setState({
       isScrolling: true,
     });
   }
 
-  mouseUp(e) {
+  mouseUp() {
     this.setState({
       isScrolling: false,
     });
   }
 
   handleScroll(e) {
-    if (this.state.isScrolling) {
+    const obj = document.getElementById('recommended_block_content');
+    const totalLength = (obj.childElementCount - 4) * 202;
+    if (this.state.isScrolling && ((this.state.xPos > 0 && e.screenX < 753 && e.screenX > 40) || (this.state.xPos <= 670 && e.screenX > 85))) {
+      const percent = (this.state.xPos / 670);
+      obj.scrollLeft = totalLength * percent;
       this.setState({
         xPos: e.screenX - 75,
       });
     }
+  }
+
+  leftButtonClick() {
+    const obj = document.getElementById('recommended_block_content');
+    const totalLength = (obj.childElementCount - 4) * 202;
+    obj.scrollLeft -= 202;
+    const percent = obj.scrollLeft / totalLength;
+    this.setState({
+      xPos: 670 * percent,
+    });
+  }
+
+  rightButtonClick() {
+    const obj = document.getElementById('recommended_block_content');
+    const totalLength = (obj.childElementCount - 4) * 202;
+    obj.scrollLeft += 202;
+    const percent = obj.scrollLeft / totalLength;
+    this.setState({
+      xPos: 675 * percent,
+    });
   }
 
   render() {
@@ -57,11 +83,11 @@ class App extends React.Component {
     };
 
     const blockStyle = {
-      'overflowX': 'scroll',
+      overflowX: 'hidden',
     };
 
     return (
-      <div className="block" id="recommended_block">
+      <div className="block" id="recommended_block" onMouseMove={this.handleScroll} onMouseUp={this.mouseUp}>
         <div className="block_header">
           <div className="right">
             <a href="#">
@@ -74,14 +100,14 @@ class App extends React.Component {
         </div>
         <div className="store_horizontal_games">
           <div id="recommended_block_content" style={blockStyle}>
-            {this.state.likeThis.map((elem) => {
-              return <GameInfo likeThis={elem} />;
+            {this.state.likeThis.map((elem, index) => {
+              return <GameInfo likeThis={elem} img={index + 1} />;
             })}
           </div>
         </div>
         <div className="slider_comp autoslider">
-          <div className="slider_left" />
-          <div className="slider_right" />
+          <div className="slider_left" onClick={this.leftButtonClick} />
+          <div className="slider_right" onClick={this.rightButtonClick} />
           <div className="slider">
             <div className="handle" style={handleStyle} onMouseDown={this.mouseDown} onMouseMove={this.handleScroll} onMouseUp={this.mouseUp} />
           </div>

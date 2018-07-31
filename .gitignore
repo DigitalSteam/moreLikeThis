@@ -26,3 +26,7 @@ dist/
 
 package-lock.json
 public/bundle.js
+right.png
+left.png
+
+coverage/
