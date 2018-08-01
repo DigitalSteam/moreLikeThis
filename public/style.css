@@ -4,7 +4,7 @@ body {
   justify-content: center;
 }
 
-.block {
+.block_morelikethis {
   background-color: #1c2838;
   margin-top: 40px;
   margin-bottom: 16px;
@@ -18,7 +18,7 @@ h4 {
   margin-bottom: 0px;
 }
 
-.right a {
+.right_button a {
   float: right;
   background-color: rgba(103, 193, 245, 0.2);
   color: #67c1f5;
@@ -79,7 +79,7 @@ a:-webkit-any-link {
   user-select: none;
 }
 
-.slider {
+.slider_slider {
   position: absolute;
   left: 39px;
   right: 39px;
