@@ -89,9 +89,9 @@ class App extends React.Component {
     };
 
     return (
-      <div className="block" id="recommended_block" onMouseMove={this.handleScroll} onMouseUp={this.mouseUp}>
+      <div className="block_morelikethis" id="recommended_block" onMouseMove={this.handleScroll} onMouseUp={this.mouseUp}>
         <div className="block_header">
-          <div className="right">
+          <div className="right_button">
             <a href="#">
               See All
             </a>
@@ -110,7 +110,7 @@ class App extends React.Component {
         <div className="slider_comp autoslider">
           <div className="slider_left" onClick={this.leftButtonClick} />
           <div className="slider_right" onClick={this.rightButtonClick} />
-          <div className="slider">
+          <div className="slider_slider">
             <div className="handle" style={handleStyle} onMouseDown={this.mouseDown} onMouseMove={this.handleScroll} onMouseUp={this.mouseUp} />
           </div>
         </div>
