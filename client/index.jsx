@@ -10,7 +10,7 @@ const MoreLikeThis = () => {
   );
 };
 
-// ReactDOM.render(<MoreLikeThis />, document.getElementById('app'));
+ReactDOM.render(<MoreLikeThis />, document.getElementById('MoreLikeThis'));
 
 window.MoreLikeThis = MoreLikeThis;
 export default MoreLikeThis;
